@@ -59,7 +59,8 @@ Chỉ định image có sẵn (từ Docker Hub hoặc local) để chạy contai
 
 ```services:   
     database:     
-      image: mariadb:latest   # dùng image mariadb phiên bản mới nhất ```
+      image: mariadb:latest   # dùng image mariadb phiên bản mới nhất
+```
    
 
 
