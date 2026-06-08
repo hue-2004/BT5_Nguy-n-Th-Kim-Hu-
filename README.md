@@ -218,6 +218,77 @@ services:
    <img width="782" height="596" alt="image" src="https://github.com/user-attachments/assets/1f41e697-a2bf-4e2f-8e46-65b835a1fee0" />
 
 ## 4. Triển khai lên máy chủ thật không có internet
+Trong một số môi trường bảo mật cao, máy chủ triển khai không được phép kết nối Internet. Khi đó cần chuẩn bị toàn bộ Docker Image trên máy tính có Internet trước khi chuyển sang máy chủ đích.    
 
+Bước 1: Trên Laptop - Tải và Build các Docker Image  
+```yaml
+Tải tất cả các Docker Image được khai báo trong file docker-compose.yml:  
+docker compose pull  
+Nếu ứng dụng sử dụng Dockerfile riêng, thực hiện build image:  
+docker compose build  
+Kiểm tra các image đã có trong máy:  
+docker images  
+```
+Bước 2: Trên Laptop - Export Docker Image  
+```yaml
+Có thể export từng image riêng lẻ:  
+docker save mariadb:10.11 -o mariadb.tar  
+docker save influxdb:2.7 -o influxdb.tar  
+docker save grafana/grafana -o grafana.tar  
+docker save nodered/node-red -o nodered.tar  
+docker save nginx:alpine -o nginx.tar  
+docker save my_flask_api:latest -o flask_api.tar  
+
+Hoặc export tất cả image vào một file duy nhất:  
+docker save \  
+mariadb:10.11 \  
+influxdb:2.7 \  
+grafana/grafana \  
+nodered/node-red \  
+nginx:alpine \  
+my_flask_api:latest \  
+-o project_images.tar  
+```
+Bước 3: Chuyển dữ liệu sang máy chủ  
+```yaml
+Sao chép các tệp sau sang máy chủ:    
+docker-compose.yml  
+file .env (nếu có)  
+project_images.tar  
+source code hoặc dữ liệu cần thiết  
+
+Có thể sử dụng USB, ổ cứng di động hoặc mạng LAN nội bộ để sao chép.  
+```
+
+Bước 4: Trên máy chủ - Import Docker Image  
+```yaml
+Kiểm tra Docker đã được cài đặt:  
+docker --version  
+Import image vào máy chủ:  
+docker load -i project_images.tar  
+Kiểm tra danh sách image:  
+docker images   
+```yaml
+Bước 5: Khởi động hệ thống  
+Di chuyển đến thư mục chứa file docker-compose.yml:  
+cd project  
+Khởi động toàn bộ hệ thống:  
+docker compose up -d  
+Kiểm tra các container đang hoạt động:  
+docker ps  
+Xem log nếu cần:   
+docker compose logs -f  
+
+Bước 6: Kiểm tra ứng dụng  
+```yaml
+Kiểm tra trạng thái các container:  
+docker ps -a  
+Kiểm tra các cổng dịch vụ:  
+netstat -tulpn  
+Hoặc truy cập ứng dụng từ trình duyệt:  
+http://IP_MAY_CHU  
+```
+Kết luận
+Quy trình triển khai Docker trên máy chủ không có Internet gồm các bước: tải và build image trên máy có Internet, export image thành file .tar, sao chép sang máy chủ, import image và khởi động hệ thống bằng Docker Compose. Phương pháp này giúp triển khai ứng dụng nhanh chóng, đảm bảo tính nhất quán và phù hợp với các môi trường có yêu cầu bảo mật cao.  
 
 
