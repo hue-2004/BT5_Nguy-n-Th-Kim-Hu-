@@ -56,8 +56,8 @@ Khi sử dụng Docker, bạn có thể dễ dàng triển khai và mở rộng 
 `image`  
 
 Chỉ định image có sẵn (từ Docker Hub hoặc local) để chạy container.  
-
-```services:   
+```yaml
+  services:   
     database:     
       image: mariadb:latest   # dùng image mariadb phiên bản mới nhất
 ```
