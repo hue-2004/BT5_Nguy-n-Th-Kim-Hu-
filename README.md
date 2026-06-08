@@ -221,6 +221,7 @@ services:
 Trong một số môi trường bảo mật cao, máy chủ triển khai không được phép kết nối Internet. Khi đó cần chuẩn bị toàn bộ Docker Image trên máy tính có Internet trước khi chuyển sang máy chủ đích.    
 
 Bước 1: Trên Laptop - Tải và Build các Docker Image  
+
 ```yaml
 Tải tất cả các Docker Image được khai báo trong file docker-compose.yml:  
 docker compose pull  
@@ -229,6 +230,7 @@ docker compose build
 Kiểm tra các image đã có trong máy:  
 docker images  
 ```
+
 Bước 2: Trên Laptop - Export Docker Image  
 ```yaml
 Có thể export từng image riêng lẻ:  
@@ -249,6 +251,7 @@ nginx:alpine \
 my_flask_api:latest \  
 -o project_images.tar  
 ```
+
 Bước 3: Chuyển dữ liệu sang máy chủ  
 ```yaml
 Sao chép các tệp sau sang máy chủ:    
@@ -268,8 +271,11 @@ Import image vào máy chủ:
 docker load -i project_images.tar  
 Kiểm tra danh sách image:  
 docker images   
+```
+
+Bước 5: Khởi động hệ thống
+
 ```yaml
-Bước 5: Khởi động hệ thống  
 Di chuyển đến thư mục chứa file docker-compose.yml:  
 cd project  
 Khởi động toàn bộ hệ thống:  
