@@ -72,11 +72,11 @@ services:
       context: ./flask_app    # thư mục chứa Dockerfile  
       dockerfile: Dockerfile  # tên file (mặc định là "Dockerfile")
 ```
-```yaml
-`container_name `   
+
+`container_name`   
 
 Đặt tên cụ thể cho container thay vì để Docker tự sinh tên ngẫu nhiên.  
-
+```yaml
 services:  
   web:  
     image: nginx  
