@@ -50,7 +50,7 @@ PHẦN 1: LÝ THUYẾT
 
 Khi sử dụng Docker, bạn có thể dễ dàng triển khai và mở rộng quy mô ứng dụng trong bất kỳ môi trường nào, đồng thời đảm bảo rằng mã nguồn của bạn sẽ luôn chạy được một cách ổn định.    
 2. Các từ khóa thường dùng trong docker-compose.yml  
-<img width="780" height="292" alt="image" src="https://github.com/user-attachments/assets/3e4ddac6-fbab-423a-8f1f-2918dfbfb8e9" />  
+<img width="782" height="298" alt="image" src="https://github.com/user-attachments/assets/685a2db6-9519-4758-8826-70b34e4419f6" />  
 
 2.1 Các keyword mô tả service  
 image  
