@@ -253,6 +253,7 @@ my_flask_api:latest \
 ```
 
 Bước 3: Chuyển dữ liệu sang máy chủ  
+
 ```yaml
 Sao chép các tệp sau sang máy chủ:    
 docker-compose.yml  
@@ -264,6 +265,7 @@ Có thể sử dụng USB, ổ cứng di động hoặc mạng LAN nội bộ đ
 ```
 
 Bước 4: Trên máy chủ - Import Docker Image  
+
 ```yaml
 Kiểm tra Docker đã được cài đặt:  
 docker --version  
@@ -285,7 +287,8 @@ docker ps
 Xem log nếu cần:   
 docker compose logs -f  
 
-Bước 6: Kiểm tra ứng dụng  
+Bước 6: Kiểm tra ứng dụng
+
 ```yaml
 Kiểm tra trạng thái các container:  
 docker ps -a  
@@ -295,6 +298,25 @@ Hoặc truy cập ứng dụng từ trình duyệt:
 http://IP_MAY_CHU  
 ```
 Kết luận
-Quy trình triển khai Docker trên máy chủ không có Internet gồm các bước: tải và build image trên máy có Internet, export image thành file .tar, sao chép sang máy chủ, import image và khởi động hệ thống bằng Docker Compose. Phương pháp này giúp triển khai ứng dụng nhanh chóng, đảm bảo tính nhất quán và phù hợp với các môi trường có yêu cầu bảo mật cao.  
+Quy trình triển khai Docker trên máy chủ không có Internet gồm các bước: tải và build image trên máy có Internet, export image thành file .tar, sao chép sang máy chủ, import image và khởi động hệ thống bằng Docker Compose. Phương pháp này giúp triển khai ứng dụng nhanh chóng, đảm bảo tính nhất quán và phù hợp với các môi trường có yêu cầu bảo mật cao.    
+
+## PHẦN 2: THỰC HÀNH  
+### 1 Mục tiêu
+
+Xây dựng hệ thống giám sát dữ liệu thời gian thực (Realtime Monitoring System) bằng Docker Compose. Hệ thống có khả năng thu thập dữ liệu từ nguồn thực tế, lưu trữ, trực quan hóa dữ liệu, phát hiện bất thường và gửi cảnh báo tự động qua Telegram.
+
+### 2 Kiến trúc hệ thống
+
+Hệ thống gồm các thành phần sau:
+
+-Node-RED: Thu thập dữ liệu thời gian thực từ nguồn bên ngoài (thời tiết, giá vàng, chứng khoán,...).  
+-MariaDB: Lưu trữ dữ liệu hiện tại (giá trị tức thời).   
+-InfluxDB: Lưu trữ dữ liệu lịch sử theo chuỗi thời gian.  
+-Grafana: Hiển thị biểu đồ dữ liệu lịch sử.  
+-Flask API: Cung cấp API truy vấn dữ liệu tức thời từ MariaDB.  
+-Nginx: Web Server phục vụ giao diện người dùng.  
+-Telegram Bot: Gửi cảnh báo khi phát hiện dữ liệu bất thường.    
+
+
 
 
