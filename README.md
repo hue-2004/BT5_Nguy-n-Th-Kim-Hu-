@@ -53,7 +53,7 @@ Khi sử dụng Docker, bạn có thể dễ dàng triển khai và mở rộng 
 <img width="782" height="298" alt="image" src="https://github.com/user-attachments/assets/685a2db6-9519-4758-8826-70b34e4419f6" />  
 
 2.1 Các keyword mô tả service  
-image  
+`image`  
 
 Chỉ định image có sẵn (từ Docker Hub hoặc local) để chạy container.  
 
