@@ -42,14 +42,14 @@ và các thành phần cần thiết để tạo thành ứng dụng:
  xoá mọi container đang chạy  
  load lại các container  từ file nén để khôi phục các container đã xoá   
  
-BÀI LÀM  
-PHẦN 1: LÝ THUYẾT  
-1. Docker là gì?
+### BÀI LÀM  
+### PHẦN 1: LÝ THUYẾT  
+## 1. Docker là gì?
    Docker là một nền tảng phần mềm giúp bạn building, deploying và running ứng dụng dễ dàng hơn bằng cách sử dụng các containers (trên nền tảng ảo hóa).
   Docker đóng gói phần mềm thành các container tiêu chuẩn hóa, chứa đựng tất cả những thứ cần thiết để phần mềm hoạt động như thư viện, công cụ hệ thống, mã nguồn và thời gian chạy. Khi cần deploy app lên bất kỳ server nào, bạn chỉ cần run container của Docker thì app của bạn sẽ được khởi chạy ngay lập tức.  
 
 Khi sử dụng Docker, bạn có thể dễ dàng triển khai và mở rộng quy mô ứng dụng trong bất kỳ môi trường nào, đồng thời đảm bảo rằng mã nguồn của bạn sẽ luôn chạy được một cách ổn định.    
-2. Các từ khóa thường dùng trong docker-compose.yml  
+## 2. Các từ khóa thường dùng trong docker-compose.yml  
 <img width="782" height="298" alt="image" src="https://github.com/user-attachments/assets/685a2db6-9519-4758-8826-70b34e4419f6" />  
 
 2.1 Các keyword mô tả service  
@@ -212,6 +212,12 @@ services:
 ```yaml
 services:  
   flask_api:  
-    working_dir: /app     
+    working_dir: /app
+```
+## 3. Ưu điểm khi triển khai ứng dụng bằng Docker
+   <img width="782" height="596" alt="image" src="https://github.com/user-attachments/assets/1f41e697-a2bf-4e2f-8e46-65b835a1fee0" />
+
+## 4. Triển khai lên máy chủ thật không có internet
+
 
 
