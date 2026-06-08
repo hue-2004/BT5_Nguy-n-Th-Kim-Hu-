@@ -85,18 +85,18 @@ services:
 `ports`  
 
 Map cổng theo cú pháp HOST:CONTAINER — cho phép truy cập từ bên ngoài máy host.  
-
+```yaml
 services:  
   grafana:  
     image: grafana/grafana  
     ports:  
       - "3000:3000"   # truy cập http://localhost:3000 → grafana bên trong container  
   ```
-```yaml  
+ 
 `environment`
 
 Truyền biến môi trường vào trong container  
-
+```yaml
 services:  
   mariadb:  
     image: mariadb:latest  
@@ -106,21 +106,21 @@ services:
       MYSQL_USER: admin  
       MYSQL_PASSWORD: admin123
 ```
-```yaml 
-env_file  
+
+`env_file ` 
 
 Đọc biến môi trường từ file .env bên ngoài — tránh lộ thông tin nhạy cảm trong compose file.  
-
+```yaml
 services:  
   mariadb:    
     env_file:   
       - .env
 ```
-```yaml 
+
 `volumes`  
 
 Mount dữ liệu giữa host và container. Có 2 loại:  
-
+```yaml
 Named volume: Docker tự quản lý vị trí lưu trữ.  
 Bind mount: Mount trực tiếp thư mục/file từ máy host.  
 services:  
@@ -129,33 +129,33 @@ services:
       - mariadb_data:/var/lib/mysql        # named volume  
       - ./config/my.cnf:/etc/mysql/my.cnf  # bind mount (file cụ thể)  
 ```
-```yaml 
+
 `networks`
 
 Chỉ định container tham gia vào mạng nào. Một container có thể thuộc nhiều mạng.  
-
+```yaml
 services:  
   flask_api:  
     networks:  
       - frontend_net  
       - backend_net
 ```
-```yaml    
+   
 `depend_on`  
 
 Xác định thứ tự khởi động — service này chỉ start sau khi các service phụ thuộc đã sẵn sàng.  
-
+```yaml
 services:  
   flask_api:  
     depends_on:  
       - mariadb    # mariadb phải khởi động trước flask_api  
       - influxdb
 ```
-```yaml 
+
 `restart`
 
 Chính sách tự khởi động lại container khi bị crash hoặc khi Docker daemon restart  
-
+```yaml
 services:  
   nodered:  
     restart: always          # luôn luôn restart  
@@ -163,20 +163,20 @@ services:
     # restart: on-failure      # chỉ restart khi thoát với mã lỗi khác 0  
     # restart: no              # không bao giờ tự restart
 ```
-```yaml 
+
 `command`
 
 Ghi đè lệnh mặc định (CMD) được định nghĩa trong image khi container khởi động.  
-
+```yaml
 services:  
   flask_api:  
     command: python app.py --port 5000
 ```
-```yaml 
+
 `healthcheck`  
 
 Định nghĩa câu lệnh kiểm tra định kỳ xem service có hoạt động đúng không.  
-
+```yaml
 services:  
   mariadb:  
     healthcheck:  
@@ -185,31 +185,31 @@ services:
       timeout: 5s     # timeout sau 5 giây  
       retries: 5      # thử lại 5 lần trước khi đánh dấu "unhealthy"
 ```
-```yaml 
+
 `expose`
 
 Mở cổng cho các container khác trong cùng network — không mở ra ngoài máy host.  
-
+```yaml
 services:  
   flask_api:  
     expose:  
       - "5000"   # container khác trong cùng network có thể gọi :5000  
                  # nhưng máy host bên ngoài không truy cập được
 ```
-```yaml 
+
 `entrypoint`
 
 Ghi đè lệnh ENTRYPOINT mặc định của image.  
-
+```yaml
 services:  
   flask_api:  
     entrypoint: ["python", "-m", "flask", "run"]
 ```
-```yaml 
+
 `working_dir`  
 
 Đặt thư mục làm việc mặc định bên trong container.  
-
+```yaml
 services:  
   flask_api:  
     working_dir: /app     
