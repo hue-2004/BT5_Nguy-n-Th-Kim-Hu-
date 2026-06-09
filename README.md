@@ -1,4 +1,4 @@
-# APP MONITOR + ALERT DATA REALTIME
+<img width="1037" height="215" alt="image" src="https://github.com/user-attachments/assets/09cb8473-bf48-42e3-8612-a313a5a91d99" /># APP MONITOR + ALERT DATA REALTIME
 MÔN HỌC: PHÁT TRIỂN ỨNG DỤNG TRÊN THIẾT BỊ DI ĐỘNG   
 Môn học: Phát triển ứng dụng với mã nguồn mở   
 Họ và tên: Nguyễn Thị Kim Huệ  
@@ -316,6 +316,21 @@ Hệ thống gồm các thành phần sau:
 -Flask API: Cung cấp API truy vấn dữ liệu tức thời từ MariaDB.  
 -Nginx: Web Server phục vụ giao diện người dùng.  
 -Telegram Bot: Gửi cảnh báo khi phát hiện dữ liệu bất thường.    
+
+1.Khởi động hệ thống  
+Sau khi hoàn tất cấu hình, build và khởi động toàn bộ hệ thống:  
+<img width="1033" height="488" alt="image" src="https://github.com/user-attachments/assets/534d10f6-2510-4a39-8cee-81860229a72a" />   
+
+Kiểm tra trạng thái các container  
+![Uploading image.png…])  
+2.Cấu hình NODERED để tự động hóa luồng dữ liệu  
+Bước 1: Chuẩn bị thư viện (nodes) trong Node-RED  
+Truy cập Node-RED qua địa chỉ `http://<IP_máy_chủ_Ubuntu>:1882 ` 
+
+`http://192.168.164.129:1882`  
+
+
+
 
 
 
