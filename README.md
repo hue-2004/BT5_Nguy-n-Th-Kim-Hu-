@@ -14,7 +14,7 @@ YÊU CẦU BÀI TẬP
   giờ muốn triển khai app này trên máy chủ thật ko có internet  
   thì các bước cần làm là?
   
-THỰC HÀNH ÁP DỤNG  
+## THỰC HÀNH ÁP DỤNG  
 sử dụng docker compose có nhiều serivce   
 và các thành phần cần thiết để tạo thành ứng dụng:  
  + nodered liên tục lấy dữ liệu từ nguồn nào đó (chứng khoán, thời tiết, giá vàng,...)  
@@ -42,8 +42,8 @@ và các thành phần cần thiết để tạo thành ứng dụng:
  xoá mọi container đang chạy  
  load lại các container  từ file nén để khôi phục các container đã xoá   
  
-### BÀI LÀM  
-### PHẦN 1: LÝ THUYẾT  
+## BÀI LÀM  
+## PHẦN 1: LÝ THUYẾT  
 ## 1. Docker là gì?
    Docker là một nền tảng phần mềm giúp bạn building, deploying và running ứng dụng dễ dàng hơn bằng cách sử dụng các containers (trên nền tảng ảo hóa).
   Docker đóng gói phần mềm thành các container tiêu chuẩn hóa, chứa đựng tất cả những thứ cần thiết để phần mềm hoạt động như thư viện, công cụ hệ thống, mã nguồn và thời gian chạy. Khi cần deploy app lên bất kỳ server nào, bạn chỉ cần run container của Docker thì app của bạn sẽ được khởi chạy ngay lập tức.  
@@ -301,11 +301,11 @@ Kết luận
 Quy trình triển khai Docker trên máy chủ không có Internet gồm các bước: tải và build image trên máy có Internet, export image thành file .tar, sao chép sang máy chủ, import image và khởi động hệ thống bằng Docker Compose. Phương pháp này giúp triển khai ứng dụng nhanh chóng, đảm bảo tính nhất quán và phù hợp với các môi trường có yêu cầu bảo mật cao.    
 
 ## PHẦN 2: THỰC HÀNH  
-### 1 Mục tiêu
+## 1 Mục tiêu
 
 Xây dựng hệ thống giám sát dữ liệu thời gian thực (Realtime Monitoring System) bằng Docker Compose. Hệ thống có khả năng thu thập dữ liệu từ nguồn thực tế, lưu trữ, trực quan hóa dữ liệu, phát hiện bất thường và gửi cảnh báo tự động qua Telegram.
 
-### 2 Kiến trúc hệ thống
+## 2 Kiến trúc hệ thống
 
 Hệ thống gồm các thành phần sau:
 
