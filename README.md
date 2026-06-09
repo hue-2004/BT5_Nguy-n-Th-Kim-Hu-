@@ -1,4 +1,4 @@
-<img width="1037" height="215" alt="image" src="https://github.com/user-attachments/assets/09cb8473-bf48-42e3-8612-a313a5a91d99" /># APP MONITOR + ALERT DATA REALTIME
+# APP MONITOR + ALERT DATA REALTIME
 MÔN HỌC: PHÁT TRIỂN ỨNG DỤNG TRÊN THIẾT BỊ DI ĐỘNG   
 Môn học: Phát triển ứng dụng với mã nguồn mở   
 Họ và tên: Nguyễn Thị Kim Huệ  
