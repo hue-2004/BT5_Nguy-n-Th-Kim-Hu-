@@ -319,15 +319,119 @@ Hệ thống gồm các thành phần sau:
 
 1.Khởi động hệ thống  
 Sau khi hoàn tất cấu hình, build và khởi động toàn bộ hệ thống:  
-<img width="1033" height="488" alt="image" src="https://github.com/user-attachments/assets/534d10f6-2510-4a39-8cee-81860229a72a" />   
+<img width="1103" height="317" alt="2" src="https://github.com/user-attachments/assets/80938220-c2e9-4ba4-8389-0db0d1d50c36" />  
 
 Kiểm tra trạng thái các container  
 ![Uploading image.png…])  
-2.Cấu hình NODERED để tự động hóa luồng dữ liệu  
-Bước 1: Chuẩn bị thư viện (nodes) trong Node-RED  
-Truy cập Node-RED qua địa chỉ `http://<IP_máy_chủ_Ubuntu>:1882 ` 
+2 Cấu hình NODERED để tự động hóa luồng dữ liệu  
+Trong giai đoạn này, Node-RED sẽ đóng vai trò đầu não thực hiện 4 nhiệm vụ liên tục:  
 
-`http://192.168.164.129:1882`  
+Cào dữ liệu thời tiết thực tế từ API công khai. (mỗi 10-30 giây)  
+Lưu trạng thái mới nhất vào MariaDB.  
+Lưu lịch sử vào InfluxDB (để Grafana vẽ biểu đồ).  
+Phân tích dị thường và kích hoạt Telegram Bot gửi tin nhắn cảnh báo vào Group.  
+Bước 1: Chuẩn bị thư viện (nodes) trong Node-RED  
+Truy cập Node-RED qua địa chỉ http://<IP_máy_chủ_Ubuntu>:1882  
+`http://192.168.164.129:1882 ` 
+Click vào Menu (3 dấu gạch ngang góc trên bên phải) -> Chọn Manage palette.Chuyển sang thẻ Install, tìm kiếm và nhấn Install lần lượt 3 thư viện sau:
+```yaml
+node-red-node-mysql (Kết nối MariaDB)
+node-red-contrib-influxdb (Kết nối InfluxDB)
+node-red-contrib-telegrambot (Kết nối Telegram)
+```
+<img width="1920" height="972" alt="3" src="https://github.com/user-attachments/assets/b3f6bfc6-09bb-4f04-9a0c-2877dffe0b77" />   
+Bước 2: Chuẩn bị thông tin Telegram Bot  
+Trước khi viết Flow, cần chuẩn bị thông tin từ Telegram:  
+Bot Token: Chat với @BotFather trên Telegram, gõ lệnh /newbot, đặt tên cho bot. Sau khi tạo xong, @BotFather sẽ cấp một chuỗi Token. Copy token này để bước sau dán vào Nodered.  
+<img width="893" height="904" alt="4" src="https://github.com/user-attachments/assets/8cdf5b1c-4653-44b5-80c6-56bd9fc9f4b3" />  
+Tạo nhóm chat có bot để cảnh báo:  
+
+Tạo một Group mới trên Telegram, thêm các thành viên vào (bao gồm cả tài khoản ID 1875746636 theo yêu cầu bài tập).  
+Thêm cả con Bot vừa tạo ở trên vào nhóm này với quyền Admin (để nó có quyền gửi tin nhắn).  
+<img width="968" height="907" alt="5" src="https://github.com/user-attachments/assets/a8b6ce02-01c5-4a08-8a76-368bcf4df4d7" />  
+Bước 3:Deploy và kiểm tra  
+Bấm nút Deploy màu đỏ trên góc phải màn hình để lưu và chạy.   
+<img width="1559" height="969" alt="6" src="https://github.com/user-attachments/assets/0fa9e3d9-fc89-4f5f-9da9-80b9b812f33f" />   
+Truy cập vào giao diện web để xem kết quả http://192.168.164.129  
+<img width="1920" height="856" alt="7" src="https://github.com/user-attachments/assets/7fe550e8-a204-40de-9080-7974279f7be0" />  
+Kết quả cảnh báo khi nhiệt độ vượt ngưỡng 30 độ:  
+3 Cấu hình Grafana kết nối InfluxDB  
+Bước 1: Đăng nhập grafana  
+Truy cập http://192.168.164.129:3002 để vào Grafana  
+Đăng nhập và đổi mật khẩu (nếu cần)  
+<img width="1920" height="967" alt="9" src="https://github.com/user-attachments/assets/83ab1b9f-1961-4312-8899-9fe5893f2f9d" />  
+Bước 2: Thêm datasource  
+Tại thanh menu bên trái, chọn Connections -> Data sources -> Add data source.  
+<img width="1920" height="677" alt="10" src="https://github.com/user-attachments/assets/ee06d623-740a-47f1-92b4-14c6af40c0f5" />  
+Kéo xuống dưới cùng ấn Save & test. Nếu hiện thông báo màu xanh "Data source is working" là thành công!  
+
+<img width="1920" height="958" alt="11" src="https://github.com/user-attachments/assets/004ca3e1-3208-492c-9f99-e7ef7e39ee40" />  
+
+Bước 3: Tạo biểu đồ  
+Nhấn vào biểu tượng + ở phía trên bên phải, chọn New Dashboard -> add Panel -> Configure Visualization  
+
+<img width="1920" height="927" alt="12" src="https://github.com/user-attachments/assets/2af2f913-a80e-4889-8f2c-f9a8426f232d" />  
+Bước 4: Lấy link nhúng Iframe  
+Tại ô biểu đồ vừa vẽ, góc trên cùng bên phải của khung biểu đồ đó -> Xuất hiện dấu 3 chấm -> Chọn Share -> Chọn thẻ Embed.  
+Copy đoạn link trong thuộc tính src="..." (đổi localhost thành 192.168.164.129) rồi dán vào file index.html của Nginx.  
+
+<img width="1920" height="905" alt="13" src="https://github.com/user-attachments/assets/4c7c9788-0878-4844-9375-7bb2eda7fe94" />  
+
+<img width="945" height="443" alt="14" src="https://github.com/user-attachments/assets/7f04c91a-a4b9-4876-9521-4baaf5835d8b" />   
+
+<img width="1337" height="228" alt="15" src="https://github.com/user-attachments/assets/7f8187c5-c58c-4ce8-b8d5-6ef9dea888bb" /> 
+
+4.Kết quả  
+<img width="1920" height="976" alt="16" src="https://github.com/user-attachments/assets/7a1edff8-aca6-4bf0-a2b4-43ac1b0afb4e" />   
+
+## Đóng gói và khôi phục hệ thống  
+Bước 1: Xuất tất cả các Container ra file nén:  
+```yaml
+# Đứng tại thư mục người dùng, tiến hành nén thư mục dự án lại   
+sudo tar -czvf weather_monitor_backup.tar.gz weather-monitor/
+```  
+Bước 2: Xóa mọi container đang chạy để nghiệm thu  
+```yaml
+cd weather-monitor  
+docker compose down  
+image  
+```
+<img width="614" height="220" alt="18" src="https://github.com/user-attachments/assets/6332067c-a5fc-4dfd-930b-78cb04f5eff2" />  
+Lúc này vào trình duyệt cổng 8085 sẽ sập hoàn toàn, chứng minh hệ thống đã được dọn dẹp sạch  
+<img width="1920" height="841" alt="17" src="https://github.com/user-attachments/assets/bd2a721a-ff87-4f98-bf87-8113ad61888f" />  
+Bước 3: Khôi phục lại từ file nén    
+```yaml
+# Giải nén lại thư mục    
+tar -xzvf weather_monitor_backup.tar.gz  
+```
+```yaml
+# Truy cập và khởi động lại toàn bộ hệ thống như cũ  
+cd weather-monitor  
+docker compose up -d  
+```
+Hệ thống sẽ tự động khôi phục lại trạng thái đỉnh cao ban đầu, giữ nguyên lịch sử dữ liệu cũ trong DB mà không cần cấu hình lại từ đầu!  
+Bước 4: Kết quả khôi phục   
+<img width="1920" height="973" alt="19" src="https://github.com/user-attachments/assets/8021af30-afea-48fc-8dc0-c57f59c5a923" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
 
 
 
