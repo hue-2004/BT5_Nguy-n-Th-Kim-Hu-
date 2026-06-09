@@ -396,9 +396,11 @@ cd weather-monitor
 docker compose down  
 image  
 ```
-<img width="614" height="220" alt="18" src="https://github.com/user-attachments/assets/6332067c-a5fc-4dfd-930b-78cb04f5eff2" />  
+<img width="614" height="220" alt="18" src="https://github.com/user-attachments/assets/6332067c-a5fc-4dfd-930b-78cb04f5eff2" />    
+
 Lúc này vào trình duyệt cổng 8085 sẽ sập hoàn toàn, chứng minh hệ thống đã được dọn dẹp sạch  
-<img width="1920" height="841" alt="17" src="https://github.com/user-attachments/assets/bd2a721a-ff87-4f98-bf87-8113ad61888f" />  
+<img width="1920" height="841" alt="17" src="https://github.com/user-attachments/assets/bd2a721a-ff87-4f98-bf87-8113ad61888f" />    
+
 Bước 3: Khôi phục lại từ file nén    
 ```yaml
 # Giải nén lại thư mục    
@@ -409,8 +411,10 @@ tar -xzvf weather_monitor_backup.tar.gz
 cd weather-monitor  
 docker compose up -d  
 ```
-Hệ thống sẽ tự động khôi phục lại trạng thái đỉnh cao ban đầu, giữ nguyên lịch sử dữ liệu cũ trong DB mà không cần cấu hình lại từ đầu!  
-Bước 4: Kết quả khôi phục   
+Hệ thống sẽ tự động khôi phục lại trạng thái đỉnh cao ban đầu, giữ nguyên lịch sử dữ liệu cũ trong DB mà không cần cấu hình lại từ đầu!   
+
+Bước 4: Kết quả khôi phục     
+
 <img width="1920" height="973" alt="19" src="https://github.com/user-attachments/assets/8021af30-afea-48fc-8dc0-c57f59c5a923" />
 
 
