@@ -4,7 +4,7 @@ Môn học: Phát triển ứng dụng với mã nguồn mở
 Họ và tên: Nguyễn Thị Kim Huệ  
 MSSV: K225480106026  
 YÊU CẦU BÀI TẬP  
-### LÝ THUYẾT  
+## LÝ THUYẾT  
 + docker là gì?   
 + các keyword được sử dụng trong docker-compose.yml  
   để mô tả 1 service, network, volume,...  
