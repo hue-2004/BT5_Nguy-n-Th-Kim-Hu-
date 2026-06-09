@@ -342,13 +342,17 @@ node-red-contrib-telegrambot (Kết nối Telegram)
 <img width="1920" height="972" alt="3" src="https://github.com/user-attachments/assets/b3f6bfc6-09bb-4f04-9a0c-2877dffe0b77" />   
 Bước 2: Chuẩn bị thông tin Telegram Bot  
 Trước khi viết Flow, cần chuẩn bị thông tin từ Telegram:  
-Bot Token: Chat với @BotFather trên Telegram, gõ lệnh /newbot, đặt tên cho bot. Sau khi tạo xong, @BotFather sẽ cấp một chuỗi Token. Copy token này để bước sau dán vào Nodered.  
-<img width="893" height="904" alt="4" src="https://github.com/user-attachments/assets/8cdf5b1c-4653-44b5-80c6-56bd9fc9f4b3" />  
+Bot Token: Chat với @BotFather trên Telegram, gõ lệnh /newbot, đặt tên cho bot. Sau khi tạo xong, @BotFather sẽ cấp một chuỗi Token. Copy token này để bước sau dán vào Nodered.    
+
+<img width="893" height="904" alt="4" src="https://github.com/user-attachments/assets/8cdf5b1c-4653-44b5-80c6-56bd9fc9f4b3" />    
+
 Tạo nhóm chat có bot để cảnh báo:  
 
 Tạo một Group mới trên Telegram, thêm các thành viên vào (bao gồm cả tài khoản ID 1875746636 theo yêu cầu bài tập).  
-Thêm cả con Bot vừa tạo ở trên vào nhóm này với quyền Admin (để nó có quyền gửi tin nhắn).  
+Thêm cả con Bot vừa tạo ở trên vào nhóm này với quyền Admin (để nó có quyền gửi tin nhắn).    
+
 <img width="968" height="907" alt="5" src="https://github.com/user-attachments/assets/a8b6ce02-01c5-4a08-8a76-368bcf4df4d7" />  
+
 Bước 3:Deploy và kiểm tra  
 Bấm nút Deploy màu đỏ trên góc phải màn hình để lưu và chạy.   
 <img width="1559" height="969" alt="6" src="https://github.com/user-attachments/assets/0fa9e3d9-fc89-4f5f-9da9-80b9b812f33f" />   
